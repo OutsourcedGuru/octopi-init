@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>octopi-init</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://use.fontawesome.com https://code.jquery.com; style-src 'self' 'unsafe-inline' https://use.fontawesome.com; img-src https://*; child-src 'none';">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bulma.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title is-1">octopi-init</h1>
+                <h2 class="subtitle">Easily configure your OctoPi-imaged microSD adapter</h2>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <p class="subtitle">
+                Minimally, adjust your country code for wi-fi and set your zone's credentials.
+                <!--We are using node <script>document.write(process.versions.node)</script>,
+                Chrome <script>document.write(process.versions.chrome)</script>,
+                and Electron <script>document.write(process.versions.electron)</script>.-->
+            </p>
+            <p>&nbsp;&nbsp;&nbsp;<i class="fa fa-folder"></i>&nbsp;<b>/boot</b><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i id="idSupplicant" class="fa fa-file-code red"></i>&nbsp;<b id="idSupplicantFilename" class="red">octopi-wpa-supplicant.txt</b> <i id="idSupplicantCheckbox" class="fa fa-square"></i><!--i class="fa fa-check-square"></i--><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-file-code"></i>&nbsp;<b>octopi.txt</b><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-file-code"></i>&nbsp;<b>config.txt</b><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-file-code"></i>&nbsp;<b>cmdline.txt</b><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-file-code"></i>&nbsp;<b><i>ssh</i></b> (to enable SSH)<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-file-code"></i>&nbsp;<b><i><s>octopi-network.txt</s></i></b>> (ignored)<br/>
+            </p>
+        </div>
+    </section>
+    <section>
+        <div class="columns">
+            &nbsp;&nbsp;&nbsp;
+            <div class="column">
+                <label class="label" for="countryCode">Wi-fi Country Code:</label>
+                <div class="field">
+                    <div class="control">
+                        <div class="select is-medium">
+                            <select id="countryCode" class="select">
+                                <option value="GB" selected>GB</option>
+                                <option value="US">US</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <label class="label" for="wifiSSID">Wi-fi SSID:</label>
+                <div class="field">
+                    <div class="control">
+                        <div class="input is-large">
+                            <input id="wifiSSID" class="input" value="origincodeacademy" maxlength="20" size="30">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <label class="label" for="wifiPassword">Wi-fi Password:</label>
+                <div class="field">
+                    <div class="control">
+                        <div class="input is-large">
+                            <input id="wifiPassword" class="input" value="OriginRock$" maxlength="20" size="30">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                    <label class="label" for="wifiHidden">Zone Hidden?</label>
+                    <div class="field">
+                        <div class="control">
+                            <div class="input is-medium">
+                                <input id="wifiHidden" type="checkbox" class="checkbox"> &nbsp;&nbsp;True
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                <div class="field">
+                    <div class="control">
+                        <p>&nbsp;</p>
+                        <button class="button is-primary is-large" id="save-button">Save</button>
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<script>
+    function handleSaveClick() {
+        document.getElementById('idSupplicant').classList.remove('red');
+        document.getElementById('idSupplicantFilename').classList.remove('red');
+        document.getElementById('idSupplicantCheckbox').classList.add('fa-check-square')
+        document.getElementById('idSupplicantCheckbox').classList.remove('fa-square') ;
+    }
+    document.getElementById('save-button').addEventListener('click', handleSaveClick);
+</script>
+</body>
+</html>
