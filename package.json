@@ -1,12 +1,8 @@
 {
   "name": "octopi-init",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A cross-platform application to initialize the boot partition of an OctoPi microSD card",
   "main": "main.js",
-  "scripts": {
-    "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/OutsourcedGuru/octopi-init.git"
@@ -23,7 +19,43 @@
     "url": "https://github.com/OutsourcedGuru/octopi-init/issues"
   },
   "homepage": "https://github.com/OutsourcedGuru/octopi-init#readme",
+  "scripts": {
+    "postinstall": "install-app-deps",
+    "start": "npm install && electron .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pack": "build --dir",
+    "dist": "build"
+  },
+  "build": {
+    "appId": "guru.outsourced.octopi-init",
+    "dmg": {
+      "contents": [
+        {
+          "x": 150,
+          "y": 180
+        },
+        {
+          "x": 490,
+          "y": 180,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "NSIS",
+      "icon": "build/icon.ico"
+    }
+  },
+  "dependencies": {},
   "devDependencies": {
-    "electron": "^2.0.2"
+    "electron": "^2.0.2",
+    "electron-builder": "^20.15.1"
   }
 }
