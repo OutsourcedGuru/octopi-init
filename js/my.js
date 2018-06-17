@@ -1,6 +1,43 @@
-var fs = require('fs');
+var fs =        require('fs');
+var bUpdate =   false;
+var dataFile =  undefined;
 
 function handleSaveClick() {
+    var strSSID =      document.getElementById('wifiSSID').value;
+    var strPassword =  document.getElementById('wifiPassword').value;
+    var objSelect =    document.getElementById('countryCode');
+    var strCountry =   objSelect.options[objSelect.selectedIndex].value;
+    var bHidden =      document.getElementById('wifiHidden').checked = (bHidden == 1);
+    var strContent =   '\n\nnetwork={\n\tssid="' +
+                       strSSID +      '"\n\tpsk="' +
+                       strPassword +  '"\n}\n';
+    var lines =        dataFile.split('\n');
+    dataFile =         '';
+    var line =         undefined;
+    var reCountry =    /^country=([.]*){2}/;                   // ^country=GB # United Kingdom$
+    var reSSID =       /^[ \t]+ssid[ \t]?=[ \t]?"([^"]*)"/;    // ^  ssid="ZoneName"$
+    var rePassword =   /^[ \t]+psk[ \t]?=[ \t]?"([^"]*)"/;     // ^  psk="ZonePassword"$
+    var reHidden =     /^[ \t]+scan_ssid[ \t]?=[ \t]?([01])$/; // ^  scan_ssid=1$
+    for (var i=0; i<lines.length; i++) {
+        line = lines[i];
+        if (bUpdate) {
+            if (line.match(reHidden))   { line = '\tscan_ssid=' + bHidden; }
+            if (line.match(reSSID))     { line = '\tssid="' +     strSSID     + '"'; }
+            if (line.match(rePassword)) { line = '\tpsk="' +      strPassword + '"'; }
+        }
+        if (line.match(reCountry))      { line = 'country=' +     strCountry; console.log('here');}
+        dataFile += line + '\n';
+    }
+    if (bUpdate) {
+        fs.writeFile('/Volumes/boot/octopi-wpa-supplicant.txt', dataFile, (err) => {
+            if(err){alert("An error ocurred updating the file " + err.message);}
+        });
+    } else {
+        dataFile += strContent;
+        fs.writeFile('/Volumes/boot/octopi-wpa-supplicant.txt', dataFile, (err) => {
+            if(err){alert("An error ocurred updating the file " + err.message);}
+        });    
+    }
     document.getElementById('idSupplicant').classList.remove('red');
     document.getElementById('idSupplicantFilename').classList.remove('red');
     document.getElementById('idSupplicantCheckbox').classList.add('fa-check-square')
@@ -11,6 +48,8 @@ function handleReadClick() {
     fs.readFile('/Volumes/boot/octopi-wpa-supplicant.txt', 'utf-8', (err, data) => {
         if (err) { alert("An error ocurred reading the file :" + err.message); return; }
 
+        // Save the data globally for later re-use if updating
+        dataFile = data;
         var lines = data.split('\n');
         // alert('Read ' + lines.length + ' lines from octopi-wpa-supplicant.txt');
         // console.log("The file content is : " + data);
@@ -23,6 +62,7 @@ function handleReadClick() {
         var network = lines.find(function(item) {return item.substr(0, 8)=='network='});
         if (network != undefined) {
             // console.log('Network is active');
+            var bUpdate =     true;
             var reSSID =      /^[ \t]+ssid[ \t]?=[ \t]?"([^"]*)"/;    // ^  ssid="ZoneName"$
             var rePassword =  /^[ \t]+psk[ \t]?=[ \t]?"([^"]*)"/;     // ^  psk="ZonePassword"$
             var reHidden =    /^[ \t]+scan_ssid[ \t]?=[ \t]?([01])$/; // ^  scan_ssid=1$
