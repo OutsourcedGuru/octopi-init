@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/bulma.css">
     <link rel="stylesheet" href="css/main.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <script src="js/my.js"></script>
 </head>
 
 <body>    
@@ -16,7 +17,7 @@
         <div class="hero-head">
             <div class="hero-body">
                 <div class="container">
-                    <h1 class="title is-1">octopi-init</h1>
+                    <h1 class="title is-1">octopi-init <script>document.write(version())</script></h1>
                     <h2 class="subtitle">Easily configure your OctoPi-imaged microSD adapter</h2>
                     <span class="middle right icon"><a href="javascript:eject(function(r){alert(r);})" title="Eject microSD card"><i class="fa fa-eject fa-3x"></i></a></span>
                 </div>
@@ -25,11 +26,12 @@
     </section>
     <section id="sectionReadButton" class="section"><button class="button is-large" id="read-button">Read microSD contents</button></section>
 
-            <!--div class="box cta">
-                <p class="has-text-centered">
-                    <span class="tag is-primary">New</span> octopi-init now includes an installer for OSX!
-                </p>
-            </div-->
+    <section>&nbsp;</section>
+    <div class="box cta">
+        <p class="has-text-centered">
+            <span class="tag is-primary">New</span> octopi-init now includes an installer for OSX!
+        </p>
+    </div>
 
     <section id="sectionFiles" class="section hidden">
         <div class="container">
@@ -38,11 +40,11 @@
             </p>
             <p>&nbsp;&nbsp;&nbsp;<i class="fa fa-folder"></i>&nbsp;<b>/boot</b><br/>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i id="idSupplicant" class="fa fa-file-code red"></i>&nbsp;<b id="idSupplicantFilename" class="red">octopi-wpa-supplicant.txt</b> <i id="idSupplicantCheckbox" class="fa fa-square"></i><br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-file-code"></i>&nbsp;<b>octopi.txt</b><br/>
+                <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-file-code"></i>&nbsp;<b>octopi.txt</b><br/>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-file-code"></i>&nbsp;<b>config.txt</b><br/>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-file-code"></i>&nbsp;<b>cmdline.txt</b><br/>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-file-code"></i>&nbsp;<b><i>ssh</i></b> (to enable SSH)<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-file-code"></i>&nbsp;<b><i><s>octopi-network.txt</s></i></b>> (ignored)<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-file-code"></i>&nbsp;<b><i><s>octopi-network.txt</s></i></b>> (ignored)<br/>-->
             </p>
         </div>
     </section>
@@ -99,6 +101,5 @@
             </div>
         </div>
     </section>
-    <script src="js/my.js"></script>
 </body>
 </html>

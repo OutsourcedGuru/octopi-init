@@ -1,7 +1,12 @@
 var child_process = require('child_process');
 var fs =            require('fs');
+var package =       require('./package.json');
 var bUpdate =       false;
 var dataFile =      undefined;
+
+function version() {
+    return '<font style="font-size: 20pt">v' + package.version + '</font>';
+}
 
 function handleSaveClick() {
     var strSSID =      document.getElementById('wifiSSID').value;
@@ -41,8 +46,10 @@ function handleSaveClick() {
     }
     document.getElementById('idSupplicant').classList.remove('red');
     document.getElementById('idSupplicantFilename').classList.remove('red');
-    document.getElementById('idSupplicantCheckbox').classList.add('fa-check-square')
-    document.getElementById('idSupplicantCheckbox').classList.remove('fa-square') ;
+    document.getElementById('idSupplicantCheckbox').classList.add('fa-check-square');
+    document.getElementById('idSupplicantCheckbox').classList.remove('fa-square');
+    document.getElementById('save-button').disabled = true;
+    setTimeout(function(){alert('Update saved. Please press the Eject button to safely remove the microSD card.')},500);
 }
 
 function handleReadClick() {
@@ -102,8 +109,10 @@ function handleReadClick() {
     document.getElementById('sectionEditWPA').classList.remove('hidden');
 }
 
-document.getElementById('save-button').addEventListener('click', handleSaveClick);
-document.getElementById('read-button').addEventListener('click', handleReadClick);
+setTimeout(function() {
+    document.getElementById('save-button').addEventListener('click', handleSaveClick);
+    document.getElementById('read-button').addEventListener('click', handleReadClick);
+}, 1000);
 
 function eject(callback) {
   //  diskutil eject $(mount|grep boot|awk '{print $1;}')
@@ -114,6 +123,11 @@ function eject(callback) {
     console.log(stdout);
     callback('The microSD card was successfully ejected.');
   });
+  setTimeout(function(){
+    document.getElementById('sectionReadButton').classList.add('hidden');
+    document.getElementById('sectionFiles').classList.add('hidden');
+    document.getElementById('sectionEditWPA').classList.add('hidden');    
+  },1000);
 }
 
 // Populate the wi-fi country select
@@ -145,8 +159,12 @@ var countries = [
     'ZA', 'ZM', 'ZW'
 ];
 
-countries.forEach(function(item) {
-    var option = document.createElement('option');
-    option.text = option.value = item;
-    document.getElementById('countryCode').appendChild(option);
-});
+setTimeout(function() {
+    countries.forEach(function(item) {
+        var option = document.createElement('option');
+        option.text = option.value = item;
+        document.getElementById('countryCode').appendChild(option);
+    });
+}, 1000);
+
+
