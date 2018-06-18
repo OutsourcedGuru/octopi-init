@@ -22,3 +22,14 @@ At the moment, only an OSX installer is available.
 3. Put the microSD card into the Raspberry Pi and boot it to continue
 
 [![OSX download image](https://user-images.githubusercontent.com/15971213/41556200-dfa23e6c-72ee-11e8-981f-8883d89ee4f1.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init-1.0.6.dmg)
+
+## Apple warning message
+When running `octopi-init` the first time, you'll need to Ctl-Click the application and select `Open`. Otherwise, you'll see a confusing warning like this:
+
+![screen shot 2018-06-18 at 1 02 29 pm](https://user-images.githubusercontent.com/15971213/41559125-f7d8549a-72f7-11e8-9157-db60a31b4451.png)
+
+It's just Apple trying to make $99 per developer per year as part of their business model. As suggested, Ctl-Click the program and choose `Open` to see:
+
+![screen shot 2018-06-18 at 1 05 23 pm](https://user-images.githubusercontent.com/15971213/41559252-604a3bf6-72f8-11e8-9c49-680552881067.png)
+
+Then just click the `Open` button again and you should be good to go. You won't have to repeat this again, in theory.
