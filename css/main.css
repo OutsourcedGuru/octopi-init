@@ -5,3 +5,18 @@
 .hidden {
     display: none;
 }
+
+.middle {
+    margin-top: -60px;
+}
+
+.right {
+    float: right;
+    margin-right: 10px;
+}
+
+.box.cta {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+}

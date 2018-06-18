@@ -1,6 +1,7 @@
-var fs =        require('fs');
-var bUpdate =   false;
-var dataFile =  undefined;
+var child_process = require('child_process');
+var fs =            require('fs');
+var bUpdate =       false;
+var dataFile =      undefined;
 
 function handleSaveClick() {
     var strSSID =      document.getElementById('wifiSSID').value;
@@ -46,7 +47,7 @@ function handleSaveClick() {
 
 function handleReadClick() {
     fs.readFile('/Volumes/boot/octopi-wpa-supplicant.txt', 'utf-8', (err, data) => {
-        if (err) { alert("An error ocurred reading the file :" + err.message); return; }
+        if (err) { alert("It appears that the microSD is not mounted.\n\nHere is the error: " + err.message); return; }
 
         // Save the data globally for later re-use if updating
         dataFile = data;
@@ -103,6 +104,17 @@ function handleReadClick() {
 
 document.getElementById('save-button').addEventListener('click', handleSaveClick);
 document.getElementById('read-button').addEventListener('click', handleReadClick);
+
+function eject(callback) {
+  //  diskutil eject $(mount|grep boot|awk '{print $1;}')
+  var command = "/usr/sbin/diskutil eject $(mount|grep boot|awk '{print $1;}')";
+  child_process.exec(command, function(err, stdout, stderr) {
+    if (err) {console.log(err); callback('There was a problem ejecting the microSD card.'); return;}
+
+    console.log(stdout);
+    callback('The microSD card was successfully ejected.');
+  });
+}
 
 // Populate the wi-fi country select
 var countries = [
