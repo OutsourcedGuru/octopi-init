@@ -21,7 +21,7 @@ At the moment, only an OSX installer is available.
 2. Using the `octopi-init` software here, configure that microSD card from your workstation, ejecting it when finished
 3. Put the microSD card into the Raspberry Pi and boot it to continue
 
-[![OSX download image](https://user-images.githubusercontent.com/15971213/41556200-dfa23e6c-72ee-11e8-981f-8883d89ee4f1.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init-1.0.6.dmg)
+[![OSX download image](https://user-images.githubusercontent.com/15971213/41556200-dfa23e6c-72ee-11e8-981f-8883d89ee4f1.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init-1.0.7.dmg)
 
 ## Apple warning message
 When running `octopi-init` the first time, you'll need to Ctl-Click the application and select `Open`. Otherwise, you'll see a confusing warning like this:
@@ -33,3 +33,12 @@ It's just Apple trying to make $99 per developer per year as part of their busin
 ![screen shot 2018-06-18 at 1 05 23 pm](https://user-images.githubusercontent.com/15971213/41559252-604a3bf6-72f8-11e8-9c49-680552881067.png)
 
 Then just click the `Open` button again and you should be good to go. You won't have to repeat this again, in theory.
+
+|Description|Version|Author|Last Update|
+|:---|:---|:---|:---|
+|octopi-init|v1.0.7|OutsourcedGuru|June 18, 2018|
+
+|Donate||Cryptocurrency|
+|:-----:|---|:--------:|
+| ![eth-receive](https://user-images.githubusercontent.com/15971213/40564950-932d4d10-601f-11e8-90f0-459f8b32f01c.png) || ![btc-receive](https://user-images.githubusercontent.com/15971213/40564971-a2826002-601f-11e8-8d5e-eeb35ab53300.png) |
+|Ethereum||Bitcoin|
