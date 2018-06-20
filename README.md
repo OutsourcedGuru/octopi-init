@@ -21,7 +21,18 @@ At the moment, only an OSX installer is available.
 2. Using the `octopi-init` software here, configure that microSD card from your workstation, ejecting it when finished
 3. Put the microSD card into the Raspberry Pi and boot it to continue
 
-[![OSX download image](https://user-images.githubusercontent.com/15971213/41556200-dfa23e6c-72ee-11e8-981f-8883d89ee4f1.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init-1.0.8.dmg)
+[![OSX download image](https://user-images.githubusercontent.com/15971213/41556200-dfa23e6c-72ee-11e8-981f-8883d89ee4f1.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init-1.0.7.dmg)
+
+[Linux/Ubuntu/Debian/SUSE AppImage download (x86_64)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init-1.0.8-x86_64.AppImage)
+
+[Linux DEB image download (amd64)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init_1.0.8_amd64.deb)
+
+## Linux installation
+After downloading the **AppImage** file, you'll minimally need to mark the file so that it can be executed.
+
+Make it executable by running `chmod a+x octopi-init*.AppImage` then execute it with `./octopi-init*.AppImage`
+
+Alternately, for the `deb` file image, you'd want to install it with `sudo apt install ~/Downloads/octipi-init-1.0.8_amd64.deb`, for example.
 
 ## Apple warning message
 When running `octopi-init` the first time, you'll need to Ctl-Click the application and select `Open`. Otherwise, you'll see a confusing warning like this:
