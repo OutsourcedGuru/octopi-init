@@ -1,6 +1,6 @@
 {
   "name": "octopi-init",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A cross-platform application to initialize the boot partition of an OctoPi microSD card",
   "main": "main.js",
   "repository": {
@@ -13,7 +13,7 @@
     "nodejs",
     "electron"
   ],
-  "author": "OutsourcedGuru",
+  "author": { "name": "OutsourcedGuru", "email": "support@outsourced.guru", "url": "https://github.com/OutsourcedGuru" },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/OutsourcedGuru/octopi-init/issues"

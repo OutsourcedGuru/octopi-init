@@ -21,7 +21,7 @@ At the moment, only an OSX installer is available.
 2. Using the `octopi-init` software here, configure that microSD card from your workstation, ejecting it when finished
 3. Put the microSD card into the Raspberry Pi and boot it to continue
 
-[![OSX download image](https://user-images.githubusercontent.com/15971213/41556200-dfa23e6c-72ee-11e8-981f-8883d89ee4f1.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init-1.0.7.dmg)
+[![OSX download image](https://user-images.githubusercontent.com/15971213/41556200-dfa23e6c-72ee-11e8-981f-8883d89ee4f1.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init-1.0.8.dmg)
 
 ## Apple warning message
 When running `octopi-init` the first time, you'll need to Ctl-Click the application and select `Open`. Otherwise, you'll see a confusing warning like this:

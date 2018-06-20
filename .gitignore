@@ -7,4 +7,6 @@ dist/*.yaml
 dist/*.yml
 dist/github
 dist/mac
+dist/.icon-set/
+dist/linux-unpacked/
 

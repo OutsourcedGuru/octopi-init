@@ -3,6 +3,41 @@ var fs =            require('fs');
 var package =       require('./package.json');
 var bUpdate =       false;
 var dataFile =      undefined;
+var bootPath =      undefined;
+var bootDevice =    undefined;
+var microSDDevice = undefined;
+
+function saveBootPath() {
+  // mount|grep boot|grep media|awk '{print $3;}'
+  var command = undefined;
+  switch (process.platform) {
+    case 'darwin':
+      command = "mount|grep boot|grep media|awk '{print $3;}'";
+      break;
+    case 'linux':
+      command = "mount|grep boot|grep media|awk '{print $1 \" \" $3;}'";
+      break;
+    case 'win32':
+      command = "mount|grep boot|grep media|awk '{print $3;}'";
+      break;
+    default:
+      command = "mount|grep boot|grep media|awk '{print $3;}'";
+      break;
+  }
+  child_process.exec(command, function(err, stdout, stderr) {
+    if (err) {console.log(err); callback('There was a problem finding the microSD card.'); return;}
+
+    if (process.platform == 'linux') {
+      bootPath =      stdout.replace('\n', '').match(/\s([a-z0-9\/]+)/i)[1];
+      bootDevice =    stdout.replace('\n', '').match(/^([a-z0-9\/]+)/i)[1];
+      microSDDevice = stdout.replace('\n', '').match(/^([a-z\/]+)/i)[1];
+      console.log('bootPath: ' + bootPath + ' bootDevice: ' + bootDevice + ' microSDDevice: ' + microSDDevice);
+    } else {
+      bootPath = stdout.replace('\n', '');
+    }
+    bootPath = stdout.replace('\n', '');
+  });
+} // function saveBootPath()
 
 function version() {
   return '<font style="font-size: 20pt">v' + package.version + '</font>';
@@ -35,12 +70,12 @@ function handleSaveClick() {
     dataFile += line + '\n';
   }
   if (bUpdate) {
-    fs.writeFile('/Volumes/boot/octopi-wpa-supplicant.txt', dataFile, (err) => {
+    fs.writeFile(bootPath + '/octopi-wpa-supplicant.txt', dataFile, (err) => {
       if(err){alert("An error ocurred updating the file " + err.message);}
     });
   } else {
     dataFile += strContent;
-    fs.writeFile('/Volumes/boot/octopi-wpa-supplicant.txt', dataFile, (err) => {
+    fs.writeFile(bootPath + '/octopi-wpa-supplicant.txt', dataFile, (err) => {
       if(err){alert("An error ocurred updating the file " + err.message);}
     });    
   }
@@ -53,7 +88,7 @@ function handleSaveClick() {
 } // function handleSaveClick()
 
 function handleReadClick() {
-  fs.readFile('/Volumes/boot/octopi-wpa-supplicant.txt', 'utf-8', (err, data) => {
+  fs.readFile(bootPath + '/octopi-wpa-supplicant.txt', 'utf-8', (err, data) => {
     if (err) {
       alert("It appears that the microSD is not mounted.\n\nHere is the error: " + err.message);
       return;
@@ -110,18 +145,37 @@ setTimeout(function() {
 }, 1000);
 
 function eject(callback) {
-  //  diskutil eject $(mount|grep boot|awk '{print $1;}')
-  var command = "/usr/sbin/diskutil eject $(mount|grep boot|awk '{print $1;}')";
+  //  diskutil eject $(mount|grep boot|grep media|awk '{print $1;}')
+  var command = undefined;
+  switch (process.platform) {
+    case 'darwin':
+      command = "/usr/sbin/diskutil eject $(mount|grep boot|awk '{print $1;}')";
+      break;
+    case 'linux':
+      command = "/bin/umount $(mount|grep boot|grep media|awk '{print $1;}')";
+      break;
+    case 'win32':
+      command = "/usr/sbin/diskutil eject $(mount|grep boot|grep media|awk '{print $1;}')";
+      break;
+    default:
+      command = "/usr/sbin/diskutil eject $(mount|grep boot|grep media|awk '{print $1;}')";
+      break;
+  }
   child_process.exec(command, function(err, stdout, stderr) {
     if (err) {console.log(err); callback('There was a problem ejecting the microSD card.'); return;}
 
-    console.log(stdout);
-    callback('The microSD card was successfully ejected.');
-  });
+    console.log('The boot partition was unmounted.');
+    if (process.platform == 'linux') {
+      callback("The boot partition was unmounted. Please use File Manager to eject the rootfs partition then physically remove the microSD card.");
+    } else {
+      callback("The microSD was safely ejected. Please remove it now.");
+    }         // if (process.platform ...
+  });         // /bin/umount ...
   setTimeout(function(){
     document.getElementById('sectionReadButton').classList.add('hidden');
     document.getElementById('sectionFiles').classList.add('hidden');
-    document.getElementById('sectionEditWPA').classList.add('hidden');    
+    document.getElementById('sectionEditWPA').classList.add('hidden');
+    document.getElementById('ejectLink').href = 'javascript:alert("The microSD has been ejected.");';
   },1000);
 } // function eject(callback)
 
@@ -161,4 +215,6 @@ setTimeout(function() {
     option.text = option.value = item;
     document.getElementById('countryCode').appendChild(option);
   });
+
+  saveBootPath();
 }, 1000);
