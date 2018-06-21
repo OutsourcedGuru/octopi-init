@@ -15,7 +15,7 @@ Getting started with OctoPrint—as loaded on a Raspberry Pi computer—involves
 ![octopi-init opening screen](https://user-images.githubusercontent.com/15971213/41556511-dd25bbd6-72ef-11e8-9d92-1a31a12eddaf.png)
 
 ## Installation
-At the moment, only an OSX installer is available.
+At the moment, only an OSX installer is available. Two Linux versions are available (AppImage and deb), which only require a small amount of work to get going.
 
 1. Download the latest [OctoPi image](https://octoprint.org/download/) and follow the instructions there to burn it to your microSD card
 2. Using the `octopi-init` software here, configure that microSD card from your workstation, ejecting it when finished
