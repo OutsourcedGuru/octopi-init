@@ -12,7 +12,7 @@ A Node.js & Electron application for easily configuring your freshly-imaged Octo
 ## Overview
 Getting started with OctoPrint—as loaded on a Raspberry Pi computer—involves installing an OctoPi image and then some configuration work before this computer can bootup. This application hopes to make that configuration step much easier by introducing a desktop application to perform this step.
 
-![octopi-init opening screen](https://user-images.githubusercontent.com/15971213/41556511-dd25bbd6-72ef-11e8-9d92-1a31a12eddaf.png)
+![Screenshot](https://user-images.githubusercontent.com/15971213/41730127-dd507e92-752f-11e8-85c8-c278cc9570e3.png)
 
 ## Installation
 Go to the repository to read the installation instructions and to find the download links to the latest version.
