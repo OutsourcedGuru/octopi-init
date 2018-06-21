@@ -23,9 +23,7 @@ At the moment, only an OSX installer is available. Two Linux versions are availa
 
 [![OSX download image](https://user-images.githubusercontent.com/15971213/41556200-dfa23e6c-72ee-11e8-981f-8883d89ee4f1.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init-1.0.8.dmg)
 
-[Linux/Ubuntu/Debian/SUSE AppImage download (x86_64)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init-1.0.8-x86_64.AppImage)
-
-[Linux DEB image download (amd64)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init_1.0.8_amd64.deb)
+[![Linux/Ubuntu/Debian/SUSE AppImage download (x86_64)](https://user-images.githubusercontent.com/15971213/41729839-28274afa-752f-11e8-9174-0cee16fb5506.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init-1.0.8-x86_64.AppImage) [![deb amd64 download image](https://user-images.githubusercontent.com/15971213/41729756-e2902e26-752e-11e8-9cb2-75f576888bd8.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init_1.0.8_amd64.deb)
 
 ## Linux installation
 After downloading the **AppImage** file, you'll minimally need to mark the file so that it can be executed.
