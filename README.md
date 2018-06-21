@@ -15,13 +15,13 @@ Getting started with OctoPrint—as loaded on a Raspberry Pi computer—involves
 ![Screenshot](https://user-images.githubusercontent.com/15971213/41730127-dd507e92-752f-11e8-85c8-c278cc9570e3.png)
 
 ## Installation
-At the moment, only an OSX installer is available. Two Linux versions are available (AppImage and deb), which only require a small amount of work to get going.
+At the moment, only OSX and Windows installers are available. Two Linux versions are available (AppImage and deb) which require a small amount of work to get going.
 
 1. Download the latest [OctoPi image](https://octoprint.org/download/) and follow the instructions there to burn it to your microSD card
 2. Using the `octopi-init` software here, configure that microSD card from your workstation, ejecting it when finished
 3. Put the microSD card into the Raspberry Pi and boot it to continue
 
-[![OSX download image](https://user-images.githubusercontent.com/15971213/41556200-dfa23e6c-72ee-11e8-981f-8883d89ee4f1.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init-1.0.8.dmg)
+[![OSX download image](https://user-images.githubusercontent.com/15971213/41556200-dfa23e6c-72ee-11e8-981f-8883d89ee4f1.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init-1.0.8.dmg) [![Windows setup download](https://user-images.githubusercontent.com/15971213/41747553-3767c164-7563-11e8-98a4-0126b5317dec.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init%20Setup%201.0.8.exe)
 
 [![Linux/Ubuntu/Debian/SUSE AppImage download (x86_64)](https://user-images.githubusercontent.com/15971213/41729839-28274afa-752f-11e8-9174-0cee16fb5506.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init-1.0.8-x86_64.AppImage) [![deb amd64 download image](https://user-images.githubusercontent.com/15971213/41729756-e2902e26-752e-11e8-9cb2-75f576888bd8.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init_1.0.8_amd64.deb)
 
