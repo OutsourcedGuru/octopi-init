@@ -25,6 +25,13 @@ At the moment, only OSX and Windows installers are available. Two Linux versions
 
 [![Linux/Ubuntu/Debian/SUSE AppImage download (x86_64)](https://user-images.githubusercontent.com/15971213/41729839-28274afa-752f-11e8-9174-0cee16fb5506.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init-1.0.8-x86_64.AppImage) [![deb amd64 download image](https://user-images.githubusercontent.com/15971213/41729756-e2902e26-752e-11e8-9cb2-75f576888bd8.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init_1.0.8_amd64.deb)
 
+## Windows installation
+After downloading the setup executable, you may see the error dialog "Windows protected your PC: Windows Defender SmartScreen prevented an unrecognized app from starting. Running this app might put your PC at risk. More info..."
+
+This is Microsoft taking a page out of Apple's playbook and also trying to charge developers each year to digitally sign apps they're giving away for free.
+
+Simply click the `More info` link and select the `Run anyway` button to continue.
+
 ## Linux installation
 After downloading the **AppImage** file, you'll minimally need to mark the file so that it can be executed.
 
