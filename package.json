@@ -13,7 +13,11 @@
     "nodejs",
     "electron"
   ],
-  "author": { "name": "OutsourcedGuru", "email": "support@outsourced.guru", "url": "https://github.com/OutsourcedGuru" },
+  "author": {
+    "name": "OutsourcedGuru",
+    "email": "support@outsourced.guru",
+    "url": "https://github.com/OutsourcedGuru"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/OutsourcedGuru/octopi-init/issues"

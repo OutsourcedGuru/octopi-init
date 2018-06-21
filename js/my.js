@@ -12,7 +12,7 @@ function saveBootPath() {
   var command = undefined;
   switch (process.platform) {
     case 'darwin':
-      command = "mount|grep boot|grep media|awk '{print $3;}'";
+      command = "mount|grep /Volumes/boot|awk '{print $3;}'";
       break;
     case 'linux':
       command = "mount|grep boot|grep media|awk '{print $1 \" \" $3;}'";
@@ -149,7 +149,7 @@ function eject(callback) {
   var command = undefined;
   switch (process.platform) {
     case 'darwin':
-      command = "/usr/sbin/diskutil eject $(mount|grep boot|awk '{print $1;}')";
+      command = "/usr/sbin/diskutil eject $(mount|grep /Volumes/boot|awk '{print $1;}')";
       break;
     case 'linux':
       command = "/bin/umount $(mount|grep boot|grep media|awk '{print $1;}')";
@@ -175,7 +175,7 @@ function eject(callback) {
     document.getElementById('sectionReadButton').classList.add('hidden');
     document.getElementById('sectionFiles').classList.add('hidden');
     document.getElementById('sectionEditWPA').classList.add('hidden');
-    document.getElementById('ejectLink').href = 'javascript:alert("The microSD has been ejected.");';
+    document.getElementById('ejectLink').href = 'javascript:alert("The microSD has already been ejected.");';
   },1000);
 } // function eject(callback)
 
