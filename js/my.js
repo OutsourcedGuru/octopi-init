@@ -8,7 +8,6 @@ var bootDevice =    undefined;
 var microSDDevice = undefined;
 
 function saveBootPath() {
-  // mount|grep boot|grep media|awk '{print $3;}'
   var command = undefined;
   switch (process.platform) {
     case 'darwin':
@@ -48,10 +47,11 @@ function handleSaveClick() {
   var strPassword =  document.getElementById('wifiPassword').value;
   var objSelect =    document.getElementById('countryCode');
   var strCountry =   objSelect.options[objSelect.selectedIndex].value;
-  var bHidden =      document.getElementById('wifiHidden').checked = (bHidden == 1);
+  var bHidden =      document.getElementById('wifiHidden').checked == 1;  
   var strContent =   '\n\nnetwork={\n\tssid="' +
                      strSSID +      '"\n\tpsk="' +
-                     strPassword +  '"\n}\n';
+                     strPassword +  '"\n' +
+                     (bHidden ? '\tscan_ssid=1\n' : '') +'}\n';
   var lines =        dataFile.split('\n');
   dataFile =         '';
   var line =         undefined;
