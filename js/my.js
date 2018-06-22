@@ -6,21 +6,30 @@ var dataFile =      undefined;
 var bootPath =      undefined;
 var bootDevice =    undefined;
 var microSDDevice = undefined;
+var pathSeparator = undefined;
 
 function saveBootPath() {
   var command = undefined;
   switch (process.platform) {
     case 'darwin':
-      command = "mount|grep /Volumes/boot|awk '{print $3;}'";
+      command =       "mount|grep /Volumes/boot|awk '{print $3;}'";
+      pathSeparator = "/";
       break;
     case 'linux':
-      command = "mount|grep boot|grep media|awk '{print $1 \" \" $3;}'";
+      command =       "mount|grep boot|grep media|awk '{print $1 \" \" $3;}'";
+      pathSeparator = "/";
       break;
     case 'win32':
-      command = "mount|grep boot|grep media|awk '{print $3;}'";
+      command =       "if exist e:\\config.txt echo e:& " +
+                      "if exist d:\\config.txt echo d:& " +
+                      "if exist f:\\config.txt echo f:";
+      pathSeparator = "\\";
+      console.log('win32 detected');
+      bootPath = 'e:';
       break;
     default:
-      command = "mount|grep boot|grep media|awk '{print $3;}'";
+      command =       "mount|grep boot|grep media|awk '{print $3;}'";
+      pathSeparator = "/";
       break;
   }
   child_process.exec(command, function(err, stdout, stderr) {
@@ -31,11 +40,14 @@ function saveBootPath() {
       bootDevice =    stdout.replace('\n', '').match(/^([a-z0-9\/]+)/i)[1];
       microSDDevice = stdout.replace('\n', '').match(/^([a-z\/]+)/i)[1];
       console.log('bootPath: ' + bootPath + ' bootDevice: ' + bootDevice + ' microSDDevice: ' + microSDDevice);
+    } else if (process.platform == 'win32') {
+      //bootPath = stdout;
+      //if (bootPath == undefined) bootPath = "e:";
     } else {
       bootPath = stdout.replace('\n', '');
     }
-    bootPath = stdout.replace('\n', '');
   });
+  console.log('bootPath: ' + bootPath);
 } // function saveBootPath()
 
 function version() {
@@ -47,7 +59,7 @@ function handleSaveClick() {
   var strPassword =  document.getElementById('wifiPassword').value;
   var objSelect =    document.getElementById('countryCode');
   var strCountry =   objSelect.options[objSelect.selectedIndex].value;
-  var bHidden =      document.getElementById('wifiHidden').checked == 1;  
+  var bHidden =      document.getElementById('wifiHidden').checked == 1;
   var strContent =   '\n\nnetwork={\n\tssid="' +
                      strSSID +      '"\n\tpsk="' +
                      strPassword +  '"\n' +
@@ -70,25 +82,29 @@ function handleSaveClick() {
     dataFile += line + '\n';
   }
   if (bUpdate) {
-    fs.writeFile(bootPath + '/octopi-wpa-supplicant.txt', dataFile, (err) => {
+    fs.writeFile(bootPath + pathSeparator + 'octopi-wpa-supplicant.txt', dataFile, (err) => {
       if(err){alert("An error ocurred updating the file " + err.message);}
     });
   } else {
     dataFile += strContent;
-    fs.writeFile(bootPath + '/octopi-wpa-supplicant.txt', dataFile, (err) => {
+    fs.writeFile(bootPath + pathSeparator + 'octopi-wpa-supplicant.txt', dataFile, (err) => {
       if(err){alert("An error ocurred updating the file " + err.message);}
-    });    
+    });
   }
   document.getElementById('idSupplicant').classList.remove('red');
   document.getElementById('idSupplicantFilename').classList.remove('red');
   document.getElementById('idSupplicantCheckbox').classList.add('fa-check-square');
   document.getElementById('idSupplicantCheckbox').classList.remove('fa-square');
   document.getElementById('save-button').disabled = true;
-  setTimeout(function(){alert('Update saved. Please press the Eject button to safely remove the microSD card.')},500);
+  if (process.platform == 'win32') {
+    setTimeout(function(){alert('Update saved. Please use Explorer (File Manager) to safely remove the microSD card.')},500);
+  } else {
+    setTimeout(function(){alert('Update saved. Please press the Eject button to safely remove the microSD card.')},500);
+  }
 } // function handleSaveClick()
 
 function handleReadClick() {
-  fs.readFile(bootPath + '/octopi-wpa-supplicant.txt', 'utf-8', (err, data) => {
+  fs.readFile(bootPath + pathSeparator + 'octopi-wpa-supplicant.txt', 'utf-8', (err, data) => {
     if (err) {
       alert("It appears that the microSD is not mounted.\n\nHere is the error: " + err.message);
       return;
@@ -155,7 +171,7 @@ function eject(callback) {
       command = "/bin/umount $(mount|grep boot|grep media|awk '{print $1;}')";
       break;
     case 'win32':
-      command = "/usr/sbin/diskutil eject $(mount|grep boot|grep media|awk '{print $1;}')";
+      command = "echo No soup for you!";
       break;
     default:
       command = "/usr/sbin/diskutil eject $(mount|grep boot|grep media|awk '{print $1;}')";
@@ -167,6 +183,8 @@ function eject(callback) {
     console.log('The boot partition was unmounted.');
     if (process.platform == 'linux') {
       callback("The boot partition was unmounted. Please use File Manager to eject the rootfs partition then physically remove the microSD card.");
+    } else if (process.platform == "win32") {
+      callback("Unfortunately this feature can't be done programmatically on Windows. Please eject using Explorer (File Manager)");
     } else {
       callback("The microSD was safely ejected. Please remove it now.");
     }         // if (process.platform ...
