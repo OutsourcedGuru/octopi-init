@@ -6,30 +6,22 @@ var dataFile =      undefined;
 var bootPath =      undefined;
 var bootDevice =    undefined;
 var microSDDevice = undefined;
-var pathSeparator = undefined;
+var path =          require('path');
 
 function saveBootPath() {
   var command = undefined;
   switch (process.platform) {
     case 'darwin':
       command =       "mount|grep /Volumes/boot|awk '{print $3;}'";
-      pathSeparator = "/";
       break;
     case 'linux':
       command =       "mount|grep boot|grep media|awk '{print $1 \" \" $3;}'";
-      pathSeparator = "/";
       break;
     case 'win32':
-      command =       "if exist e:\\config.txt echo e:& " +
-                      "if exist d:\\config.txt echo d:& " +
-                      "if exist f:\\config.txt echo f:";
-      pathSeparator = "\\";
-      console.log('win32 detected');
-      bootPath = 'e:';
+      command =       "@echo off & for %f in (e d f g h i) do if exist %f:\\config.txt echo %f:";
       break;
     default:
       command =       "mount|grep boot|grep media|awk '{print $3;}'";
-      pathSeparator = "/";
       break;
   }
   child_process.exec(command, function(err, stdout, stderr) {
@@ -41,13 +33,11 @@ function saveBootPath() {
       microSDDevice = stdout.replace('\n', '').match(/^([a-z\/]+)/i)[1];
       console.log('bootPath: ' + bootPath + ' bootDevice: ' + bootDevice + ' microSDDevice: ' + microSDDevice);
     } else if (process.platform == 'win32') {
-      //bootPath = stdout;
-      //if (bootPath == undefined) bootPath = "e:";
+      bootPath = stdout.replace('\r\n', '');
     } else {
       bootPath = stdout.replace('\n', '');
     }
   });
-  console.log('bootPath: ' + bootPath);
 } // function saveBootPath()
 
 function version() {
@@ -82,12 +72,12 @@ function handleSaveClick() {
     dataFile += line + '\n';
   }
   if (bUpdate) {
-    fs.writeFile(bootPath + pathSeparator + 'octopi-wpa-supplicant.txt', dataFile, (err) => {
+    fs.writeFile(path.join(bootPath, 'octopi-wpa-supplicant.txt'), dataFile, (err) => {
       if(err){alert("An error ocurred updating the file " + err.message);}
     });
   } else {
     dataFile += strContent;
-    fs.writeFile(bootPath + pathSeparator + 'octopi-wpa-supplicant.txt', dataFile, (err) => {
+    fs.writeFile(path.join(bootPath, 'octopi-wpa-supplicant.txt'), dataFile, (err) => {
       if(err){alert("An error ocurred updating the file " + err.message);}
     });
   }
@@ -104,7 +94,8 @@ function handleSaveClick() {
 } // function handleSaveClick()
 
 function handleReadClick() {
-  fs.readFile(bootPath + pathSeparator + 'octopi-wpa-supplicant.txt', 'utf-8', (err, data) => {
+  //console.log(path.join(bootPath, 'octopi-wpa-supplicant.txt'));
+  fs.readFile(path.join(bootPath, 'octopi-wpa-supplicant.txt'), 'utf-8', (err, data) => {
     if (err) {
       alert("It appears that the microSD is not mounted.\n\nHere is the error: " + err.message);
       return;

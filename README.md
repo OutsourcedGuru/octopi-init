@@ -21,9 +21,11 @@ At the moment, only OSX and Windows installers are available. Two Linux versions
 2. Using the `octopi-init` software here, configure that microSD card from your workstation, ejecting it when finished
 3. Put the microSD card into the Raspberry Pi and boot it to continue
 
-[![OSX download image](https://user-images.githubusercontent.com/15971213/41556200-dfa23e6c-72ee-11e8-981f-8883d89ee4f1.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init-1.0.8.dmg) [![Windows setup download](https://user-images.githubusercontent.com/15971213/41747553-3767c164-7563-11e8-98a4-0126b5317dec.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init%20Setup%201.0.8.exe)
+[![OSX download 
+image](https://user-images.githubusercontent.com/15971213/41556200-dfa23e6c-72ee-11e8-981f-8883d89ee4f1.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init-1.0.8.dmg) [![Windows setup download](https://user-images.githubusercontent.com/15971213/41747553-3767c164-7563-11e8-98a4-0126b5317dec.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init%20Setup%201.0.9.exe)
 
-[![Linux/Ubuntu/Debian/SUSE AppImage download (x86_64)](https://user-images.githubusercontent.com/15971213/41729839-28274afa-752f-11e8-9174-0cee16fb5506.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init-1.0.8-x86_64.AppImage) [![deb amd64 download image](https://user-images.githubusercontent.com/15971213/41729756-e2902e26-752e-11e8-9cb2-75f576888bd8.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init_1.0.8_amd64.deb)
+[![Linux/Ubuntu/Debian/SUSE AppImage download 
+(x86_64)](https://user-images.githubusercontent.com/15971213/41729839-28274afa-752f-11e8-9174-0cee16fb5506.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init-1.0.8-x86_64.AppImage) [![deb amd64 download image](https://user-images.githubusercontent.com/15971213/41729756-e2902e26-752e-11e8-9cb2-75f576888bd8.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init_1.0.9_amd64.deb)
 
 ## Windows installation
 After downloading the setup executable, you may see the error dialog "Windows protected your PC: Windows Defender SmartScreen prevented an unrecognized app from starting. Running this app might put your PC at risk. More info..."
@@ -52,7 +54,7 @@ Then just click the `Open` button again and you should be good to go. You won't 
 
 |Description|Version|Author|Last Update|
 |:---|:---|:---|:---|
-|octopi-init|v1.0.8|OutsourcedGuru|June 19, 2018|
+|octopi-init|v1.0.9|OutsourcedGuru|June 27, 2018|
 
 |Donate||Cryptocurrency|
 |:-----:|---|:--------:|
