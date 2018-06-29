@@ -12,7 +12,7 @@ A Node.js & Electron application for easily configuring your freshly-imaged Octo
 ## Overview
 Getting started with OctoPrint—as loaded on a Raspberry Pi computer—involves installing an OctoPi image and then some configuration work before this computer can bootup. This application hopes to make that configuration step much easier by introducing a desktop application to perform this step.
 
-![Screenshot](https://user-images.githubusercontent.com/15971213/41730127-dd507e92-752f-11e8-85c8-c278cc9570e3.png)
+![screen shot 2018-06-29 at 3 18 33 pm](https://user-images.githubusercontent.com/15971213/42117128-cbc01242-7baf-11e8-8029-ee8e523526be.png)
 
 ## Installation
 At the moment, only OSX and Windows installers are available. Two Linux versions are available (AppImage and deb) which require a small amount of work to get going.
@@ -22,7 +22,7 @@ At the moment, only OSX and Windows installers are available. Two Linux versions
 3. Put the microSD card into the Raspberry Pi and boot it to continue
 
 [![OSX download 
-image](https://user-images.githubusercontent.com/15971213/41556200-dfa23e6c-72ee-11e8-981f-8883d89ee4f1.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init-1.0.9.dmg) [![Windows setup download](https://user-images.githubusercontent.com/15971213/41747553-3767c164-7563-11e8-98a4-0126b5317dec.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init%20Setup%201.0.9.exe) [![Linux/Ubuntu/Debian/SUSE AppImage download 
+image](https://user-images.githubusercontent.com/15971213/41556200-dfa23e6c-72ee-11e8-981f-8883d89ee4f1.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init-1.1.1.dmg) [![Windows setup download](https://user-images.githubusercontent.com/15971213/41747553-3767c164-7563-11e8-98a4-0126b5317dec.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init%20Setup%201.0.9.exe) [![Linux/Ubuntu/Debian/SUSE AppImage download 
 (x86_64)](https://user-images.githubusercontent.com/15971213/41729839-28274afa-752f-11e8-9174-0cee16fb5506.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init-1.0.9-x86_64.AppImage) [![deb amd64 download image](https://user-images.githubusercontent.com/15971213/41729756-e2902e26-752e-11e8-9cb2-75f576888bd8.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init_1.0.9_amd64.deb)
 
 ## Windows installation
