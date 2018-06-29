@@ -26,7 +26,7 @@
 <section id="sectionReadButton" class="section"><button class="button is-large" id="read-button">Read microSD contents</button></section>
 
 <section>&nbsp;</section>
-<div class="box cta">
+<div id="sectionNew" class="box cta">
   <p class="has-text-centered">
     <span class="tag is-primary">New</span> octopi-init now includes an installer for OSX, Windows and AppImage/deb for Linux!
   </p>
@@ -34,70 +34,117 @@
 
 <section id="sectionFiles" class="section hidden">
   <div class="container">
-    <p class="subtitle">Minimally, adjust your country code for wi-fi and set your zone's credentials.</p>
+    <p class="subtitle">Minimally, adjust your country code for wi-fi and set your zone's credentials... or a second zone as well.</p>
     <p>&nbsp;&nbsp;&nbsp;<i class="fa fa-folder"></i>&nbsp;<b>/boot</b><br/>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i id="idSupplicant" class="fa fa-file-code red"></i>&nbsp;<b id="idSupplicantFilename" class="red">octopi-wpa-supplicant.txt</b> <i id="idSupplicantCheckbox" class="fa fa-square"></i><br/>
-      <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-file-code"></i>&nbsp;<b>octopi.txt</b><br/>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-file-code"></i>&nbsp;<b>config.txt</b><br/>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-file-code"></i>&nbsp;<b>cmdline.txt</b><br/>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-file-code"></i>&nbsp;<b><i>ssh</i></b> (to enable SSH)<br/>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-file-code"></i>&nbsp;<b><i><s>octopi-network.txt</s></i></b>> (ignored)<br/>-->
     </p>
   </div>
 </section>
-
 <section id="sectionEditWPA" class="section hidden">
-  <div class="columns">
-    <div class="column">
-      <label class="label" for="countryCode">Wi-fi Country Code:</label>
-      <div class="field">
-        <div class="control">
-          <div class="select is-medium">
-            <select id="countryCode" class="select"></select>
+  <div class="rows">
+    <div class="row">
+      <div class="columns">
+        <div class="column">
+          <label class="label" for="countryCode">Wi-fi Country Code:</label>
+          <div class="field">
+            <div class="control">
+              <div class="select is-medium">
+                <select id="countryCode" class="select"></select>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="column">
-      <label class="label" for="wifiSSID">Wi-fi SSID:</label>
-      <div class="field">
-        <div class="control">
-          <div class="input is-large">
-            <input id="wifiSSID" class="input" value="" maxlength="20" size="30">
+        <div class="column">
+          <label class="label" for="wifiSSID">Wi-fi SSID:</label>
+          <div class="field">
+            <div class="control">
+              <div class="input is-large">
+                <input id="wifiSSID" class="input" value="" maxlength="20" size="30">
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="column">
-      <label class="label" for="wifiPassword">Wi-fi Password:</label>
-      <div class="field">
-        <div class="control">
-          <div class="input is-large">
-            <input id="wifiPassword" class="input" value="" maxlength="20" size="30">
+        <div class="column">
+          <label class="label" for="wifiPassword">Wi-fi Password:</label>
+          <div class="field">
+            <div class="control">
+              <div class="input is-large">
+                <input id="wifiPassword" class="input" value="" maxlength="20" size="30">
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="column">
-      <label class="label" for="wifiHidden">Zone Hidden?</label>
-      <div class="field">
-        <div class="control">
-          <div class="input is-medium">
-            <input id="wifiHidden" type="checkbox" class="checkbox"> &nbsp;&nbsp;True
+        <div class="column">
+          <label class="label" for="wifiHidden">Zone Hidden?</label>
+          <div class="field">
+            <div class="control">
+              <div class="input is-medium">
+                <input id="wifiHidden" type="checkbox" class="checkbox"> &nbsp;&nbsp;True
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="column">
-      <div class="field">
-        <div class="control">
-          <p>&nbsp;</p>
-          <button class="button is-primary is-large" id="save-button">Save</button>
-          <p>&nbsp;</p>
-        </div>
-      </div>
-    </div>
-  </div>
+        <div class="column">
+          <div class="field">
+            <div class="control">
+              <p>&nbsp;</p>
+              <button class="button is-primary is-large" id="save-button">Save</button>
+              <p>&nbsp;</p>
+            </div>
+          </div>
+        </div><!-- column -->
+      </div><!--   columns -->
+    </div><!--     row -->
+    <div class="row">
+      <div class="columns">
+        <div class="column"><div class="is-medium">&nbsp;</div></div>
+
+        <div id="columnSSID2" class="column hidden">
+          <label class="label" for="wifiSSID2">Wi-fi SSID:</label>
+          <div class="field">
+            <div class="control">
+              <div class="input is-large">
+                <input id="wifiSSID2" class="input" value="" maxlength="20" size="30">
+              </div>
+            </div>
+          </div>
+        </div><div class="column" id="spacerSSID2"><div class="is-large">&nbsp;</div></div>
+  
+        <div id="columnPW2" class="column hidden">
+          <label class="label" for="wifiPassword2">Wi-fi Password:</label>
+          <div class="field">
+            <div class="control">
+              <div class="input is-large">
+                <input id="wifiPassword2" class="input" value="" maxlength="20" size="30">
+              </div>
+            </div>
+          </div>
+        </div><div class="column" id="spacerPW2"><div class="is-large">&nbsp;</div></div>
+
+        <div id="columnHidden2" class="column hidden">
+          <label class="label" for="wifiHidden2">Zone Hidden?</label>
+          <div class="field">
+            <div class="control">
+              <div class="input is-medium">
+                <input id="wifiHidden2" type="checkbox" class="checkbox"> &nbsp;&nbsp;True
+              </div>
+            </div>
+          </div>
+        </div><div class="column" id="spacerHidden2"><div class="is-large">&nbsp;</div></div>
+
+        <div class="column">
+          <div class="field">
+            <div class="control">
+              <p>&nbsp;</p>
+              <button class="button is-primary is-large" id="plus-button"><div id="plusButton"><i class="fa fa-plus"></i></div><div id="minusButton" class="hidden"><i class="fa fa-minus"></i></div></button>
+              <p>&nbsp;</p>
+            </div>
+          </div>
+        </div><!-- column -->
+
+      </div><!--   columns -->
+    </div><!--     row -->  
+  </div><!--       rows -->
 </section>
 </body>
 </html>

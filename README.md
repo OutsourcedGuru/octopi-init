@@ -52,7 +52,7 @@ Then just click the `Open` button again and you should be good to go. You won't 
 
 |Description|Version|Author|Last Update|
 |:---|:---|:---|:---|
-|octopi-init|v1.0.9|OutsourcedGuru|June 27, 2018|
+|octopi-init|v1.1.1|OutsourcedGuru|June 29, 2018|
 
 |Donate||Cryptocurrency|
 |:-----:|---|:--------:|
