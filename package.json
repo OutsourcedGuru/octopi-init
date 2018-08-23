@@ -1,6 +1,6 @@
 {
   "name": "octopi-init",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A cross-platform application to initialize the boot partition of an OctoPi microSD card",
   "main": "main.js",
   "repository": {
@@ -60,7 +60,7 @@
   "dependencies": {},
   "devDependencies": {
     "ajv": "^6.5.1",
-    "electron": "^2.0.2",
+    "electron": "^2.0.8",
     "electron-builder": "^20.15.1"
   }
 }

@@ -22,7 +22,7 @@ At the moment, only OSX and Windows installers are available. Two Linux versions
 3. Put the microSD card into the Raspberry Pi and boot it to continue
 
 [![OSX download 
-image](https://user-images.githubusercontent.com/15971213/41556200-dfa23e6c-72ee-11e8-981f-8883d89ee4f1.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init-1.1.1.dmg) [![Windows setup download](https://user-images.githubusercontent.com/15971213/41747553-3767c164-7563-11e8-98a4-0126b5317dec.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init%20Setup%201.0.9.exe) [![Linux/Ubuntu/Debian/SUSE AppImage download 
+image](https://user-images.githubusercontent.com/15971213/41556200-dfa23e6c-72ee-11e8-981f-8883d89ee4f1.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init-1.1.2.dmg) [![Windows setup download](https://user-images.githubusercontent.com/15971213/41747553-3767c164-7563-11e8-98a4-0126b5317dec.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init%20Setup%201.0.9.exe) [![Linux/Ubuntu/Debian/SUSE AppImage download 
 (x86_64)](https://user-images.githubusercontent.com/15971213/41729839-28274afa-752f-11e8-9174-0cee16fb5506.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init-1.0.9-x86_64.AppImage) [![deb amd64 download image](https://user-images.githubusercontent.com/15971213/41729756-e2902e26-752e-11e8-9cb2-75f576888bd8.png)](https://github.com/OutsourcedGuru/octopi-init/raw/master/dist/octopi-init_1.0.9_amd64.deb)
 
 ## Windows installation
@@ -52,7 +52,7 @@ Then just click the `Open` button again and you should be good to go. You won't 
 
 |Description|Version|Author|Last Update|
 |:---|:---|:---|:---|
-|octopi-init|v1.1.1|OutsourcedGuru|June 29, 2018|
+|octopi-init|v1.1.2|OutsourcedGuru|August 23, 2018|
 
 |Donate||Cryptocurrency|
 |:-----:|---|:--------:|
