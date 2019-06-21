@@ -37,7 +37,7 @@ After downloading the **AppImage** file, you'll minimally need to mark the file 
 
 Make it executable by running `chmod a+x octopi-init*.AppImage` then execute it with `./octopi-init*.AppImage`
 
-Alternately, for the `deb` file image, you'd want to install it with `sudo apt install ~/Downloads/octipi-init-1.0.9_amd64.deb`, for example.
+Alternately, for the `deb` file image, you'd want to install it with `sudo apt install ~/Downloads/octopi-init-1.0.9_amd64.deb`, for example.
 
 ## Apple warning message
 When running `octopi-init` the first time, you'll need to Ctl-Click the application and select `Open`. Otherwise, you'll see a confusing warning like this:
