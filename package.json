@@ -60,7 +60,7 @@
   "dependencies": {},
   "devDependencies": {
     "ajv": "^6.5.1",
-    "electron": "^2.0.8",
+    "electron": "^13.6.6",
     "electron-builder": "^20.15.1"
   }
 }
